@@ -1,0 +1,1 @@
+print(input("Name: ") + " will turn " + str(2021 - int(input("DOB: "))) + " in 2021")

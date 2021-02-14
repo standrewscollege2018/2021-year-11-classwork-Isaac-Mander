@@ -33,6 +33,7 @@ def menu():
 
 #Reactor Levels
 def reactor_levels():
+    #Loop for showing all Reactors
     for i in range(reactors,0,-1):
         print("Reactor" + str(reactors - i + 1))
         print(str(power[reactors - i]) + "%")
@@ -50,6 +51,7 @@ def total_output():
 
 #Change Reactor Power Level
 def power_level():
+    #Input for reactor you want to change
     print("Avalible Reactors are 1 to " + str(reactors))
     p_text = input("What reactor do you want to change?: ")
     if(p_text == "1") or (p_text == "2") or (p_text == "3") or (p_text == "4") or (p_text == "5") or (p_text == "6") or (p_text == "7") or (p_text == "8") or (p_text == "9") or (p_text == "10") and (p_text <= reactors):
@@ -57,14 +59,19 @@ def power_level():
         #Change Power Levels
             print("Reactor " + p_text + " it currently at " + str(power[int(p_text)-1]) + "%")
             p2 = input("Input new power level (%): ")
+            #If the input is int and equal or under 100%
             if(int_check(p2) == True):
                 if(int(p2) <= 100): power[int(p_text)-1] = int(p2)
+                #If invalid
                 else: print("INVALID")
+            #If invalid
             else: print("INVALID")
             print("")
+        #If invalid
         else:
             print("INVALID")
-            print("")        
+            print("")
+    #If invalid
     else:
         print("INVALID")
         print("")    
@@ -81,16 +88,19 @@ def int_check(var):
 #Config Reactors
 def config_reactors():
     global reactors
+    #Input for config menu
     print("1] Config New Reactor")
     print("2] Permanently Remove Reactor")
     c_text = input("Selector: ")
     if(int_check(c_text) == True):
         #Create New Reactor
         if(c_text == "1"):
+            #If no space
             if(reactors == 10):
                 print()
                 print("No Space")
                 print()
+            #If space
             else:
                 reactors += 1
                 power[reactors-1] = 0
@@ -101,13 +111,16 @@ def config_reactors():
         if(c_text == "2"):
             print("Are you sure?: Y/N")
             c2_input = input("Selector: ")
+            #If Yes
             if((c2_input.upper() == "Y")):
                 print("Deleted Reactor " + str(reactors))
                 power[int(reactors)-1] = 0
                 reactors += -1
+            #If No
             elif(c2_input.upper() == "N"):
                 print()
                 print()
+            #If not Y/N
             else:
                 print("INVALID")
 

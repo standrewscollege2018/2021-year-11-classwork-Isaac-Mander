@@ -54,7 +54,7 @@ def power_level():
     p_text = input("What reactor do you want to change?: ")
     if(p_text == "1") or (p_text == "2") or (p_text == "3") or (p_text == "4") or (p_text == "5") or (p_text == "6") or (p_text == "7") or (p_text == "8") or (p_text == "9") or (p_text == "10") and (p_text <= reactors):
         if(int(p_text) <= reactors):
-            #Change Power Level
+        #Change Power Levels
             print("Reactor " + p_text + " it currently at " + str(power[int(p_text)-1]) + "%")
             p2 = input("Input new power level (%): ")
             if(int_check(p2) == True):
@@ -69,7 +69,7 @@ def power_level():
         print("INVALID")
         print("")    
 
-#Check if int      Error Catching
+#Check if int                    Error Catching
 def int_check(var):
     try: 
         int(var)
@@ -101,10 +101,13 @@ def config_reactors():
         if(c_text == "2"):
             print("Are you sure?: Y/N")
             c2_input = input("Selector: ")
-            if((c2_input == "Y") or (c2_input == "y") or (c2_input == "N") or (c2_input == "n")):
+            if((c2_input.upper() == "Y")):
                 print("Deleted Reactor " + str(reactors))
                 power[int(reactors)-1] = 0
                 reactors += -1
+            elif(c2_input.upper() == "N"):
+                print()
+                print()
             else:
                 print("INVALID")
 

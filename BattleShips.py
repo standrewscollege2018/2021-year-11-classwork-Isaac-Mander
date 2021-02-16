@@ -10,7 +10,8 @@ h = [0,0,0,0,0,0,0,0,0]
 i = [0,0,0,0,0,0,0,0,0]
 
 
-def display_grid(a,b,c,d,e,f,g,h,i):
+def display_grid(head,a,b,c,d,e,f,g,h,i):
+    print("  " + str(head))
     print("A " + str(a))
     print("B " + str(b))
     print("C " + str(c))
@@ -32,4 +33,4 @@ if(shoot[0] == "f"): f[int(shoot[1])-1] = 1
 if(shoot[0] == "g"): g[int(shoot[1])-1] = 1
 if(shoot[0] == "h"): h[int(shoot[1])-1] = 1
 if(shoot[0] == "i"): i[int(shoot[1])-1] = 1
-display_grid(a,b,c,d,e,f,g,h,i) 
+display_grid(head,a,b,c,d,e,f,g,h,i) 

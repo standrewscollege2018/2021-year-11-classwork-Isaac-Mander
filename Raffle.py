@@ -15,4 +15,4 @@ while(adding == True):
         adding = False
         y = random.randint(1,x)
         print("The winner is...")
-        print(people[y])
+        print(people[y-1])

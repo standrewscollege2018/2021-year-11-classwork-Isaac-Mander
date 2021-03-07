@@ -4,6 +4,8 @@ import random
 spd_sound = 1481
 ping_pos = [0,0]
 
+command = 0
+
 
 r1 = ["#","#","#","#","#"]
 r2 = ["#","#","#","#","#"]
@@ -92,23 +94,38 @@ e1_pos = [random.randint(1,5),random.randint(1,5)]
 
 #Run Code
 def menu(e1_pos,pos):
+    global command
     var = input()
-    if(var == "Left"): pos[1] += -1
-    if(var == "Right"): pos[1] += 1
-    if(var == "Up"): pos[0] += -1
-    if(var == "Down"): pos[0] += 1
+    if(var == "Left"):
+        pos[1] += -1
+        command += 1
+    if(var == "Right"):
+        pos[1] += 1
+        command += 1
+    if(var == "Up"):
+        pos[0] += -1
+        command += 1
+    if(var == "Down"):
+        pos[0] += 1
+        command += 1
     if(var == "Ping"):
+        command += 1
         direction = input("Direction: ")
         
         if(direction == "Left") or (direction == "Right") or (direction == "Up") or (direction == "Down"): ping(direction,spd_sound,e1_pos,pos)
         else: pass
-    if(var == "Map"): update_map()
+    if(var == "Map"):
+        update_map()
+        command += 1
     if(var == "Shoot"):
+        command += 1
         if(shoot(pos,e1_pos) == True):
             e1_pos = [0,0]
             print("SUNK")
         else: print("MISS")
        # if(e1_pos[1] + 1 == pos[1]): print("Dsfd")
+
+
 
 #Int Check
 def int_check(var):
@@ -118,4 +135,23 @@ def int_check(var):
     except ValueError:
         return False 
 
-while(True): menu(e1_pos,pos)
+while(True):
+    menu(e1_pos,pos)
+    #Enemy Movement
+    #print(command)
+    #print("X: " + str(e1_pos[1]) + " Y: " + str(e1_pos[0]))
+    if(command == 5):
+        print("Enemy Moved")
+        ran = random.randint(0,1)
+        ran2 = random.randint(0,1)
+        if(ran == 1):
+            if(ran2 == 0): e1_pos[1] += 1
+            if(ran2 == 1): e1_pos[1] += -1            
+            if(e1_pos[1] >= 5): e1_pos[1] = 4
+            if(e1_pos[1] <= 0): e1_pos[1] = 2
+        elif(ran == 0):
+            if(ran2 == 0): e1_pos[0] += 1
+            if(ran2 == 1): e1_pos[0] += -1
+            if(e1_pos[0] >= 5): e1_pos[0] = 4
+            if(e1_pos[0] <= 0): e1_pos[0] = 2 
+        command = 0

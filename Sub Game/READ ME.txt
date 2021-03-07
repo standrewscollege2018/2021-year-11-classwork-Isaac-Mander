@@ -1,0 +1,13 @@
+Command List:
+(Use Capital Letters for first letter)
+
+Up
+Down
+Left
+Right
+
+Ping
+
+Map
+
+Shoot

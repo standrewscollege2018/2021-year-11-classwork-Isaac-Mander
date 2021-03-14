@@ -122,6 +122,8 @@ def menu(e1_pos,pos):
         if(shoot(pos,e1_pos) == True):
             e1_pos = [0,0]
             print("SUNK")
+            while(True):
+                tf = 0
         else: print("MISS")
        # if(e1_pos[1] + 1 == pos[1]): print("Dsfd")
 
